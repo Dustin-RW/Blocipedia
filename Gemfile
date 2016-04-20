@@ -20,6 +20,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'figaro'
 gem 'pry'
+gem "bcrypt", :require => "bcrypt"
 
 group :development, :test do
   gem 'byebug'
