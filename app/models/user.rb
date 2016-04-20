@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
     # recognize password without this, but mine did
     attr_accessor :password
 
+    has_many :wikis
+
     before_save :encrypt_password
 
     # look this up
