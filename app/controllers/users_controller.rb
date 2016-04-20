@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = "#{@user.email} created"
       create_session(@user)
-      redirect_to root_path
+      redirect_to wikis_path
     else
       render "new"
     end

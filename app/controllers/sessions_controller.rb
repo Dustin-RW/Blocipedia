@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:notice] = "Logged In"
-      redirect_to root_url
+      redirect_to wikis_path
     else
       flash[:alert] = "Invalid email or password"
       render "new"
