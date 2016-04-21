@@ -31,11 +31,13 @@ class WikisController < ApplicationController
 
   def update
 
+
     @wiki = Wiki.find(params[:id])
     @wiki.assign_attributes(wiki_params)
 
+    authorize @wiki
 
-    if @wiki.save
+    if @wiki.update
       flash[:notice] = 'Wiki was updated.'
       redirect_to @wiki
     else
