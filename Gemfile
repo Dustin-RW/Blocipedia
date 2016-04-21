@@ -21,6 +21,7 @@ gem 'bootstrap-sass'
 gem 'figaro'
 gem 'pry'
 gem "bcrypt", :require => "bcrypt"
+gem "pundit"
 
 group :development, :test do
   gem 'byebug'
