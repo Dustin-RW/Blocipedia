@@ -1,5 +1,12 @@
 <h1><%= @wiki.title %></h1>
-
-<%= link_to "Back to Wikis", wikis_path %> |
-<%= link_to "Edit Wiki", edit_wiki_path(@wiki) %> |
-<%= link_to "Delete Wiki", @wiki, method: :delete %>
+<p><%= @wiki.body %></p>
+<small>"Created by: "<%= @wiki.user.email %></small>
+<br />
+<br />
+<div class"row">
+  <div class="text-center">
+<%= link_to "Back to Wikis", wikis_path, class: 'btn btn-primary' %> |
+<%= link_to "Edit Wiki", edit_wiki_path(@wiki), class: 'btn btn-success' %> |
+<%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger' %>
+  </div>
+</div>

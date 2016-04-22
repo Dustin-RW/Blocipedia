@@ -22,6 +22,7 @@ gem 'figaro'
 gem 'pry'
 gem "bcrypt", :require => "bcrypt"
 gem "pundit"
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'
