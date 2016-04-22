@@ -1,8 +1,31 @@
 <h1>Wikis</h1>
 
-<% @wikis.each do |wiki| %>
-  <p><%= link_to wiki.title, wiki_path(wiki) %><br /></p>
-  <p><%= wiki.body %></p>
-<% end %><br />
+<h2 style="color:blue">Public Topics:</h2>
+<% if current_user.standard? %>
+  <% @wikis.each do |wiki| %>
+    <% if wiki.private? == false %>
+      <p><%= link_to wiki.title, wiki_path(wiki) %><br/></p>
+      <p><%= wiki.body %></p>
+    <% end %>
+  <% end %>
+  <h2 style="color:blue">Private Topics:</h2>
+  <p>Upgrade your <%= link_to "account here", root_path %></p>
+<% end %><br/>
+
+<% if current_user.premium? || current_user.admin? %>
+  <% @wikis.each do |wiki| %>
+    <% if wiki.private? == false %>
+      <p><%= link_to wiki.title, wiki_path(wiki) %><br/></p>
+      <p><%= wiki.body %></p>
+    <% end %>
+  <% end %>
+  <h2 style="color:blue">Private Topics:</h2>
+  <% @wikis.each do |wiki| %>
+      <% if wiki.private? == true %>
+      <p><%= link_to wiki.title, wiki_path(wiki) %><br/></p>
+      <p><%= wiki.body %></p>
+      <% end %>
+  <% end %>
+<% end %><br/>
 
 <%= link_to "Create Wiki", new_wiki_path %>

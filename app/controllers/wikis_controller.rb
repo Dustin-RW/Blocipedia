@@ -1,10 +1,18 @@
 class WikisController < ApplicationController
+
+  before_action :confirm_authorization, except: [:index, :show]
+
   def index
     @wikis = Wiki.all
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+
+    unless @wiki.private? == false || (current_user.premium? || current_user.admin?)
+      flash[:alert] = "You must be a premium member or admin to do that"
+      redirect_to :back
+    end
   end
 
   def new
@@ -37,7 +45,7 @@ class WikisController < ApplicationController
 
     authorize @wiki
 
-    if @wiki.update
+    if @wiki.update(wiki_params)
       flash[:notice] = 'Wiki was updated.'
       redirect_to @wiki
     else
@@ -64,5 +72,12 @@ class WikisController < ApplicationController
 
   def wiki_params
   params.require(:wiki).permit(:title, :body, :private)
+  end
+
+  def confirm_authorization
+    unless current_user.premium? || current_user.admin?
+      flash[:alert] = "Access denied, must be a premium member or admin to do that"
+      redirect_to :back
+    end
   end
 end
