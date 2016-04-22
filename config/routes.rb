@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'charges/create'
+
   get "log_in" => 'sessions#new', :as => "log_in"
   get "log_out" => 'sessions#destroy', :as => "log_out"
 
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :wikis
+  resources :charges, only: [:new, :create]
 
   #root 'welcome#index'
 

@@ -14,4 +14,14 @@ class ApplicationController < ActionController::Base
     redirect_to (request.referrer || root_path)
   end
 
+  def require_sign_in
+  # if you are not signed in as a current_user via Session, return to new_session_path
+  # with an alert
+  unless current_user
+    flash[:alert] = 'You must be logged in to do that'
+
+    redirect_to root_path
+  end
+end
+
 end
