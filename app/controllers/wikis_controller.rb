@@ -75,9 +75,10 @@ class WikisController < ApplicationController
   end
 
   def confirm_authorization
-    unless current_user.premium? || current_user.admin?
+    if current_user.nil? || current_user.standard?
       flash[:alert] = "Access denied, must be a premium member or admin to do that"
-      redirect_to :back
+      redirect_to wikis_path
     end
   end
+
 end

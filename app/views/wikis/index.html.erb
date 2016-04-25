@@ -1,7 +1,7 @@
 <h1>Wikis</h1>
 
 <h2 style="color:blue">Public Topics:</h2>
-<% if current_user.standard? %>
+<% if current_user.nil? || current_user.standard? %>
   <% @wikis.each do |wiki| %>
     <% if wiki.private? == false %>
       <p><%= link_to wiki.title, wiki_path(wiki) %><br/></p>
@@ -10,9 +10,9 @@
   <% end %>
   <h2 style="color:blue">Private Topics:</h2>
   <p>Upgrade your <%= link_to "account here", root_path %></p>
-<% end %><br/>
 
-<% if current_user.premium? || current_user.admin? %>
+
+<% elsif current_user.premium? || current_user.admin? %>
   <% @wikis.each do |wiki| %>
     <% if wiki.private? == false %>
       <p><%= link_to wiki.title, wiki_path(wiki) %><br/></p>
