@@ -1,5 +1,5 @@
 <h1><%= @wiki.title %></h1>
-<p><%= @wiki.body %></p>
+<p><%= markdown(@wiki.body) %></p>
 <small>"Created by: "<%= @wiki.user.email %></small>
 <br />
 <br />
