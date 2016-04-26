@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    @user.admin?
+    true
   end
 
   def show?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    @user.admin?
+    true
   end
 
   def edit?

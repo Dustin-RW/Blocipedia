@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
     has_many :wikis
 
+    has_many :collaborators
+
     before_save :encrypt_password
 
     before_save :set_default_role
