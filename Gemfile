@@ -24,6 +24,8 @@ gem "bcrypt", :require => "bcrypt"
 gem "pundit"
 gem 'faker'
 gem 'redcarpet'
+gem 'haml'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'byebug'
