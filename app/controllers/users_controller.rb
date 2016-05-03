@@ -27,9 +27,13 @@ class UsersController < ApplicationController
 
         @user.role = 'standard'
 
-        @user.wikis.each do |wiki|
-            wiki.private? == false if wiki.private? == true
+        privatewikis = @user.wikis.where(private: true)
+
+        privatewikis.each do |privatewiki|
+          privatewiki.update_attribute(:private, false)
         end
+
+
 
         if @user.save!
             flash[:notice] = 'Downgraded role to standard and all private wikis set to public'
@@ -39,4 +43,6 @@ class UsersController < ApplicationController
             redirect_to my_account_path
         end
     end
+
+
 end
