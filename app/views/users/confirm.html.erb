@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-4">
+
+<h4>Are you sure you wish to downgrade to a 'standard' user</h4>
+<p>You will lose:</p>
+  <ul>
+    <li>
+      All private wikis will become public
+    </li>
+    <li>
+      Unable to view further private wikis
+    </li>
+  </ul>
+
+</div>
+</div>
+<div class="row">
+  <div class="col-md-4 pull-left", style="width: auto;">
+    <%= button_to "Yes", { :controller => "users", :action => "confirm", :params => params }, class: 'btn btn-success' %>
+  </div>
+  <div class="col-md-4", style="width: auto;">
+    <%= link_to "Cancel", wikis_path, class: "btn btn-danger" %>
+  </div>
+</div>
