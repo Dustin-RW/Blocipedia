@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
-  resources :wikis
+  resources :wikis do
+    resources :collaborations, only: [:create, :destroy]
+  end
 
   #root 'welcome#index'
 

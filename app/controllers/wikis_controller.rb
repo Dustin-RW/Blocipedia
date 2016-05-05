@@ -66,5 +66,12 @@ class WikisController < ApplicationController
     params.require(:wiki).permit(:title, :body, :private)
   end
 
+  def owner
+    if wiki.include?(current_user)
+      owner = current_user.id
+    end
+  end
+
+
 
 end
