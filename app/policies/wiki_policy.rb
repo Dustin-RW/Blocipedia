@@ -1,6 +1,6 @@
 class WikiPolicy < ApplicationPolicy
   def update?
-    user.admin?
+    user.premium? || user.admin?
   end
 
   class Scope

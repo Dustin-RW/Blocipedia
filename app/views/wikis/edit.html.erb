@@ -15,5 +15,15 @@
   <%= f.check_box :private %>
 </div>
 <br />
+
+  <div class="col-md-4">
+     <h2>Add collaborators to the wiki
+     </h2>
+     <% @users.each do |user| %>
+
+     <p><%= check_box_tag "collaborator_ids[]", user.id, @wiki.user_ids.include?(user.id), :id => "collaborator_ids_#{user.id}" %>
+       <%= label_tag "collaborator_ids_#{user.id}", user.email %></p>
+       <% end %>
+   </div>
 <%= f.submit "Save", class: 'btn btn-success' %>
 <% end %>
