@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
 
+  get 'charges/create'
+
   get "log_in" => 'sessions#new', :as => "log_in"
   get "log_out" => 'sessions#destroy', :as => "log_out"
 
 
   get "sign_up" => "users#new", :as => "sign_up"
-  root :to => "users#new"
+
+  get "my_account" => "users#show", :as => "my_account"
+
+  get 'users/confirm' => 'users#confirm'
+
+  root :to => "sessions#new"
 
   resources :users
   resources :sessions
   resources :wikis
+  resources :charges, only: [:new, :create]
 
   #root 'welcome#index'
 

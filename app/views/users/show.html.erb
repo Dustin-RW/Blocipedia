@@ -1,0 +1,13 @@
+<div class="col-md-4">
+<div class="row">
+<h4 style="color: blue">Member ship status: </h4> <%= @user.role %><br/>
+<br />
+<% if @user.nil? || @user.standard? %>
+  <%= link_to "Upgrade to Premium", new_charge_path, class: "btn btn-primary" %>
+  <%= link_to "Back to Wikis", wikis_path, class: "btn btn-default" %>
+<% elsif @user.premium? %>
+  <%= link_to "Downgrade to Standard", users_confirm_path, class: "btn btn-danger", onclick: "return confirm('Are you sure you would like to downgrade?');" %>
+  <%= link_to "Back to Wikis", wikis_path, class: "btn btn-default" %>
+<% end %>
+</div>
+</div>
