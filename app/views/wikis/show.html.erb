@@ -1,6 +1,11 @@
 <h1><%= @wiki.title %></h1>
 <p><%= markdown(@wiki.body) %></p>
-<small>"Created by: "<%= @wiki.user.email %></small>
+<small>"Created by: "<%= @wiki.user.email %></small><br /><br />
+<p style="color: blue">Collaborators:
+  <% @wiki.collaborations.map do |collaborator| %>
+      <em style="color: green"><%= collaborator.user.email %></em>,
+  <% end %>
+</p>
 <br />
 <br />
 <div class"row">

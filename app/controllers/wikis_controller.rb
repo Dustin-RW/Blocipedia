@@ -39,7 +39,7 @@ class WikisController < ApplicationController
     authorize @wiki
 
     if @wiki.update(wiki_params)
-      
+
       params[:collaborator_ids].each do |uid|
         Collaboration.create!({wiki_id: params[:id], user_id: uid})
       end
