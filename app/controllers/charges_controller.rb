@@ -25,10 +25,10 @@ class ChargesController < ApplicationController
           currency: 'usd'
       )
 
-      current_user.role = 'premium'
+      current_user.update_attribute(:role, 'premium')
 
       if current_user.save!
-          flash[:notice] = "Thanks for all the money, #{current_user.email}! changed to premium member"
+          flash[:notice] = "Thanks for all the money, #{current_user.email}! changed to premium member, #{current_user.role}"
           redirect_to wikis_path # or wherever
       end
 
