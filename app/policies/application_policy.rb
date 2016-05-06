@@ -1,9 +1,9 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :user, :wiki
 
-  def initialize(user, record)
+  def initialize(user, wiki)
     @user = user
-    @record = record
+    @wiki = wiki
   end
 
   def index?
@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    scope.where(:id => wiki.id).exists?
   end
 
   def create?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    @user.admin?
+    true
   end
 
   def edit?

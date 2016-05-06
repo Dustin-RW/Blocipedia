@@ -10,7 +10,9 @@
       <div class="user_nav">
         <% if current_user %>
           Logged in as <%= current_user.email %>.
-          <%= link_to "Log Out", log_out_path %> | <%= link_to "Upgrade Account", new_charge_path %>
+          <%= link_to "Log Out", log_out_path %> |
+          <%= link_to "Manage Account", my_account_path %>
+
         <% else %>
           <%= link_to "Log In", log_in_path %> |
           <%= link_to "Sign up", sign_up_path %>
@@ -30,7 +32,7 @@
         <% elsif flash[:alert] %>
         <div class="alert alert-warning">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <%= flash[:alert] %>
+            <%= flash[:alert] %><%= link_to "Upgrade Now", wikis_path %>
         </div>
         <% end %>
 

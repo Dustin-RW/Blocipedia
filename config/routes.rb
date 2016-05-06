@@ -7,7 +7,12 @@ Rails.application.routes.draw do
 
 
   get "sign_up" => "users#new", :as => "sign_up"
-  root :to => "users#new"
+
+  get "my_account" => "users#show", :as => "my_account"
+
+  get 'users/confirm' => 'users#confirm'
+
+  root :to => "sessions#new"
 
   resources :users
   resources :sessions
