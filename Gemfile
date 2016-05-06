@@ -18,12 +18,13 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
-gem 'figaro'
+gem 'figaro', '1.0'
 gem 'pry'
 gem "bcrypt", :require => "bcrypt"
 gem "pundit"
 gem 'faker'
 gem 'redcarpet'
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug'
