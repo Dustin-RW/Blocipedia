@@ -9,12 +9,18 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    @users = User.all
   end
 
   def create
     @wiki = current_user.wikis.new(wiki_params)
 
     if @wiki.save
+
+      params[:collaborator_ids].each do |uid|
+        Collaboration.create!({wiki_id: params[:id], user_id: uid})
+      end
+
       flash[:notice] = "Wiki was saved"
       redirect_to wikis_path
     else
@@ -35,14 +41,27 @@ class WikisController < ApplicationController
 
     @wiki = Wiki.find(params[:id])
     @wiki.assign_attributes(wiki_params)
+    @wiki.collaborations = [] # TOOK ME FOREVER TO FIGURE THIS OUT, HIP HIP HURRAY!
 
     authorize @wiki
 
     if @wiki.update(wiki_params)
 
-      params[:collaborator_ids].each do |uid|
-        Collaboration.create!({wiki_id: params[:id], user_id: uid})
-      end
+        #params[:collaborator_ids].each do |uid|
+          #Collaboration.find({wiki_id: params[:id], user_id: uid})
+          #Collaboration.destroy({wiki_id: params[:id], user_id: uid})
+        #end
+
+        #params[:collaborator_ids].each do |uid|
+          #@collaboration = Collaboration.find({wiki_id: params[:id], user_id: uid})
+          #@collaboration.destroy
+        #end
+
+          params[:collaborator_ids].each do |uid|
+            Collaboration.create!({wiki_id: params[:id], user_id: uid})
+          end
+
+
       flash[:notice] = 'Wiki was updated.'
       redirect_to @wiki
     else

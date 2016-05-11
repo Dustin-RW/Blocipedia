@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :wikis do
-    resources :collaborations, only: [:create, :destroy]
+    resources :collaborations, only: [:create, :destroy, :update]
   end
 
   #root 'welcome#index'
