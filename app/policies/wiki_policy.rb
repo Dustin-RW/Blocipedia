@@ -3,6 +3,10 @@ class WikiPolicy < ApplicationPolicy
     user.premium? || user.admin?
   end
 
+  def delete?
+    user.premium? || user.admin?
+  end
+
   class Scope
     attr_reader :user, :scope
 

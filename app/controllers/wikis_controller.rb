@@ -57,9 +57,10 @@ class WikisController < ApplicationController
           #@collaboration.destroy
         #end
 
-
-          params[:collaborator_ids].each do |uid|
-            Collaboration.create!({wiki_id: params[:id], user_id: uid})
+          unless params[:collaborator_ids].nil?
+            params[:collaborator_ids].each do |uid|
+              Collaboration.create!({wiki_id: params[:id], user_id: uid})
+            end
           end
 
 
@@ -74,6 +75,8 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
+
+    authorize @wiki
 
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully"
