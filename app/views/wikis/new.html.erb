@@ -9,10 +9,13 @@
     <%= f.label :body %><br/>
     <%= f.text_area :body %>
 </p>
+<% if current_user.admin? || current_user.premium? %>
 <div class="form-inline">
-  <%= f.label :private, :class => "checkbox inline" %>
-  <%= f.check_box :private %>
+  <%= f.label :private, :class => "checkbox inline" do %>
+  <%= f.check_box :private %> Private Wiki
+  <% end %>
 </div>
+<% end %>
 <br />
 <div class="col-md-4">
     <h2>Add collaborators to the wiki

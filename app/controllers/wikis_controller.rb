@@ -1,10 +1,22 @@
 class WikisController < ApplicationController
+
+
+  before_action :require_sign_in, except: [:index, :show]
+
+  before_action :confirm_authorization, except: [:index, :show]
+
+
   def index
     @wikis = policy_scope(Wiki)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+
+    unless @wiki.private? == false || (current_user.premium? || current_user.admin?)
+      flash[:alert] = "You must be a premium member or admin to do that"
+      redirect_to :back
+    end
   end
 
   def new
@@ -100,6 +112,13 @@ class WikisController < ApplicationController
     end
   end
 
+
+  def confirm_authorization
+    if current_user.nil? || current_user.standard?
+      flash[:alert] = "Access denied, must be a premium member or admin to do that"
+      redirect_to wikis_path
+    end
+  end
 
 
 end

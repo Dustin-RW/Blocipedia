@@ -1,17 +1,29 @@
 Rails.application.routes.draw do
 
+  get 'charges/create'
+
   get "log_in" => 'sessions#new', :as => "log_in"
   get "log_out" => 'sessions#destroy', :as => "log_out"
 
 
   get "sign_up" => "users#new", :as => "sign_up"
-  root :to => "users#new"
+
+  get "my_account" => "users#show", :as => "my_account"
+
+  get 'users/confirm' => 'users#confirm'
+
+  root :to => "sessions#new"
 
   resources :users
   resources :sessions
+<<<<<<< HEAD
   resources :wikis do
     resources :collaborations, only: [:create, :destroy, :update]
   end
+=======
+  resources :wikis
+  resources :charges, only: [:new, :create]
+>>>>>>> master
 
   #root 'welcome#index'
 
