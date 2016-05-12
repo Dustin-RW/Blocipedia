@@ -22,7 +22,6 @@ gem 'figaro'
 gem 'pry'
 gem "bcrypt", :require => "bcrypt"
 gem "pundit"
-gem 'faker'
 gem 'redcarpet'
 
 group :development, :test do
