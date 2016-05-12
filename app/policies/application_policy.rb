@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    @user.admin?
+    true
   end
 
   def show?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    true
   end
 
   def scope

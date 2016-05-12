@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
     attr_accessor :password
 
     has_many :wikis
+    has_many :collaborations, dependent: :destroy
+    has_many :collaborated_wikis, through: :collaborations, source: :wiki
 
     before_save :encrypt_password
 
