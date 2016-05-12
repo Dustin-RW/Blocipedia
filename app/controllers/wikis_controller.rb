@@ -57,6 +57,7 @@ class WikisController < ApplicationController
           #@collaboration.destroy
         #end
 
+
           params[:collaborator_ids].each do |uid|
             Collaboration.create!({wiki_id: params[:id], user_id: uid})
           end
