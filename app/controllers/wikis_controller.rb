@@ -15,10 +15,10 @@ class WikisController < ApplicationController
   def create
     @wiki = current_user.wikis.new(wiki_params)
 
-    if @wiki.save
+    if @wiki.save(wiki_params)
 
       params[:collaborator_ids].each do |uid|
-        Collaboration.create!({wiki_id: params[:id], user_id: uid})
+        Collaboration.create!({wiki_id: @wiki.id, user_id: uid})
       end
 
       flash[:notice] = "Wiki was saved"
