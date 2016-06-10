@@ -1,3 +1,6 @@
+
+<div class="welcome-page">
+  <div class="col-md-4 pull-right">
 <h1>Sign up</h1>
 
 <%= form_for @user do |f| %>
@@ -15,16 +18,25 @@
   <% end %>
   <p>
     <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :style => "color : black" %>
   </p>
   <p>
     <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :password, :style => "color : black" %>
   </p>
   <p>
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :style => "color : black" %>
   </p>
 
   <p class="button"><%= f.submit %></p>
 <% end %>
+</div>
+
+<div class="col-md-8">
+  <section class="center-welcome">
+    <h1>Welcome to</h1>
+    <h2><strong>Blocipedia: SaaS Wiki Collaboration Tool</strong></h2>
+  </section>
+</div>
+</div>

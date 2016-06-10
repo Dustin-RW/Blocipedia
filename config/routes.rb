@@ -16,14 +16,15 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
-<<<<<<< HEAD
+
   resources :wikis do
     resources :collaborations, only: [:create, :destroy, :update]
   end
-=======
+
   resources :wikis
+
   resources :charges, only: [:new, :create]
->>>>>>> master
+
 
   #root 'welcome#index'
 

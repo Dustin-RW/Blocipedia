@@ -1,6 +1,8 @@
-<h1>Wikis</h1>
+<div class="container">
+<div class="copy-welcome-highlight">
+<h1>Public Wikis</h1>
+</div>
 
-<h2 style="color:blue">Public Topics:</h2>
 <% if current_user.nil? || current_user.standard? %>
   <% @wikis.each do |wiki| %>
     <% if wiki.private? == false %>
@@ -8,7 +10,9 @@
       <p><%= wiki.body %></p>
     <% end %>
   <% end %>
-  <h2 style="color:blue">Private Topics:</h2>
+  <div class="copy-welcome-highlight">
+    <h2>Private Wikis</h2>
+  </div>
   <p>Upgrade your <%= link_to "account here", root_path %></p>
 
 
@@ -19,7 +23,9 @@
       <p><%= wiki.body %></p>
     <% end %>
   <% end %>
-  <h2 style="color:blue">Private Topics:</h2>
+  <div class="copy-welcome-highlight">
+  <h2>Private Wikis</h2>
+  </div>
   <% @wikis.each do |wiki| %>
       <% if wiki.private? == true %>
       <p><%= link_to wiki.title, wiki_path(wiki) %><br/></p>
@@ -29,3 +35,4 @@
 <% end %><br/>
 
 <%= link_to "Create Wiki", new_wiki_path %>
+</div>

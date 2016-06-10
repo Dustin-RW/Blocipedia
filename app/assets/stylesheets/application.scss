@@ -17,3 +17,30 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ nav {
+   background-color: #ccddff;
+   padding: 10px 15px 30px 0px;
+ }
+
+ .welcome-page {
+   color: white;
+   text-shadow: 2px 2px 8px #000066;
+   padding-left: 50px;
+   margin-top: 25px;
+ }
+
+ .center-welcome {
+   margin-top: 25px;
+   border-radius: 6px;
+   display: block;
+   padding: 24px 15px;
+   text-align: center;
+ }
+
+ .copy-welcome-highlight {
+   color: white;
+   text-shadow: 2px 2px 8px #000066;
+   padding-left: 5px;
+   padding-bottom: 10px;
+ }
