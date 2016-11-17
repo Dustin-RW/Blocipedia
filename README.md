@@ -1,4 +1,11 @@
-##User Story
+# Blocipedia
+A production quality SaaS app that allows users to create their own wikis
+
+## Use of Stripe
+
+Tested payment methods when a user upgrades their service using https://stripe.com/
+
+## User Story
 
 * As a user, I want to sign up for a free account by providing a user name, password and email	2
 
@@ -17,3 +24,7 @@
 * As a user, I want to edit wikis using Markdown syntax	2
 
 * As a premium user, I want to add and remove collaborators for my private wikis
+
+### Note:
+
+Make sure to `rake db:reset` prior to launching server.  _see_ seeds.rb for seeded credentials
